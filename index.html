@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Paint Splash</title>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+        <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+        <script src="./shoot.js"></script>
+    </head>
+    <body>
+        <a-scene id="scene" inspector-plugin-recast>
+
+            <a-entity id="environment" environment="preset:default; skyType:gradient; lighting:point">
+            </a-entity>
+
+            <a-assets>
+                <a-asset-item id="collider" src="./navmesh1.gltf"></a-asset-item>
+            </a-assets>
+
+            <a-entity light="type: ambient; color: white; intensity:0.7"></a-entity>
+            <a-entity id="navigation-mesh" gltf-model="#collider" visible="false" nav-mesh>
+            </a-entity>
+
+            <a-plane id="ground" repeat="200 200" position="0 0 0" rotation="-90 0 0" height="200"
+            width="200" static-body visible="false">
+            </a-plane>
+
+            <a-box id="right-wall" material="color: #5075bc" color="red" position="35 5 -15" rotation="0 -70 0"
+            height="15" width="60" depth="1" static-body visible="true">
+            </a-box> 
+
+            <a-box id="right-wall" material="color: #5075bc" color="red" position="-35 5 -15" rotation="0 -70 0"
+            height="15" width="60" depth="1" static-body visible="true">
+            </a-box>
+
+            <a-box id="back-wall" material="color: #5075bc" color="red" repeat="10 1 1" position="0 5 -40" rotation="0 0 0"
+            height="15" width="90" depth="1" static-body visible="true">
+            </a-box>
+
+            <a-entity id="camera-rig" movement-controls="speed: 0.2; constrainToNavMesh: true" position="0 0 10">
+                <a-entity id="camera" camera position="0 1.6 0"
+                look-controls="pointerLockEnabled: false">
+                <a-cursor></a-cursor>
+                  </a-entity>
+                  
+                </a-entity>
+              </a-entity>
+ 
+    <a-entity>
+      <a-plane id="wall1" material="color:blue " geometry="height: 10; width: 35"
+        position="8 1 -10" static-body visible="true">
+      </a-plane>
+
+      <a-plane id="wall1" material="color:teal " geometry="height: 10; width: 35"
+        position="-8 1 -5" static-body visible="true">
+      </a-plane>
+
+      <a-plane id="wall1" material="color:yellow " geometry="height: 10; width: 35"
+        position="8 1 -15" static-body visible="true">
+      </a-plane>
+
+      <a-plane id="wall1" material="color:green " geometry="height: 10; width: 35"
+        position="-8 1 -20" static-body visible="true">
+      </a-plane>
+
+      <a-plane id="wall1" material="color:#7bdb9f " geometry="height: 10; width: 35"
+        position="8 1 25" static-body visible="true">
+      </a-plane>
+
+        <a-entity bullets></a-entity>
+        </a-scene>
+    </body>
+</html>
